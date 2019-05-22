@@ -5,10 +5,10 @@ It contains Seneca components: SenecaClient, SenecaService, SenecaPlugin
 
 Quick Links:
 
-* [Downloads](https://github.com/pip-services-node/pip-services-node/blob/master/doc/Downloads.md)
-* [API Reference](https://rawgit.com/pip-services-node/pip-services-node/master/doc/api/globals.html)
-* [Building and Testing](https://github.com/pip-services/pip-services-node/blob/master/doc/Development.md)
-* [Contributing](https://github.com/pip-services/pip-services-node/blob/master/doc/Development.md/#contrib)
+* [Downloads](https://github.com/pip-services3-node/pip-services3-seneca-node/blob/master/docs/Downloads.md)
+* [API Reference](https://pip-services3-node.github.io/pip-services3-seneca-node/globals.html)
+* [Building and Testing](https://github.com/pip-services3-node/pip-services3-seneca-node/blob/master/docs/Development.md)
+* [Contributing](https://github.com/pip-services3-node/pip-services3-seneca-node/blob/master/docs/Development.md#contrib)
 
 ## Acknowledgements
 
