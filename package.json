@@ -1,6 +1,6 @@
 {
     "name": "pip-services3-seneca-node",
-    "version": "3.0.3",
+    "version": "3.0.4",
     "author": "Conceptual Vision Consulting LLC",
     "description": "Seneca components for Pip.Services in Node.js",
     "contributors": [
@@ -41,7 +41,8 @@
     },
     "dependencies": {
         "pip-services3-commons-node": "^3.0.4",
-        "pip-services3-components-node": "^3.0.6"
+        "pip-services3-components-node": "^3.0.6",
+        "seneca": "^3.3.0"
     },
     "devDependencies": {
         "@types/node": "*",
@@ -50,7 +51,6 @@
         "@types/mocha": "*",
         "@types/chai": "*",
         "@types/seneca": "*",
-        "seneca": "^3.3.0",
         "mocha": "^2.2.0",
         "chai": "^3.5.0",
         "typedoc": "^0.11.1",
