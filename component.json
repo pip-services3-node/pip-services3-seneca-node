@@ -1,6 +1,6 @@
 {
-    "name": "pip-services3-seneca",
+    "name": "pip-services3-seneca-node",
     "registry": "pipdevs",
     "version": "3.0.4",
-    "build": "0"
+    "build": 0
 }
