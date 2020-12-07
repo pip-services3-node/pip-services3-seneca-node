@@ -4,10 +4,10 @@ This module is a part of the [Pip.Services](http://pipservices.org) polyglot mic
 
 The module contains the following packages:
 
-- **Build** 
-- **Clients** 
-- **Container**
-- **Services**
+- **Build** - contains a factory for creating Seneca components
+- **Clients** - clients that calls Seneca services
+- **Container** - a container for seneca services
+- **Services** - services that receives remove calls via Seneca protocol
 
 <a name="links"></a> Quick links:
 
