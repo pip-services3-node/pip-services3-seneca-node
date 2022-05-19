@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.SenecaService = void 0;
 /** @module services */
 /** @hidden */
 let _ = require('lodash');
@@ -20,7 +21,7 @@ const pip_services3_components_node_3 = require("pip-services3-components-node")
  *   - endpoint:              override for HTTP Endpoint dependency
  *   - controller:            override for Controller dependency
  * - connection(s):
- *   - discovery_key:         (optional) a key to retrieve the connection from [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]]
+ *   - discovery_key:         (optional) a key to retrieve the connection from [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/connect.idiscovery.html IDiscovery]]
  *   - protocol:              connection protocol: http or https
  *   - host:                  host name or IP address
  *   - port:                  port number
@@ -28,9 +29,9 @@ const pip_services3_components_node_3 = require("pip-services3-components-node")
  *
  * ### References ###
  *
- * - <code>\*:logger:\*:\*:1.0</code>         (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/log.ilogger.html ILogger]] components to pass log messages
- * - <code>\*:counters:\*:\*:1.0</code>         (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/count.icounters.html ICounters]] components to pass collected measurements
- * - <code>\*:discovery:\*:\*:1.0</code>        (optional) [[https://rawgit.com/pip-services-node/pip-services3-components-node/master/doc/api/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connection
+ * - <code>\*:logger:\*:\*:1.0</code>              (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/log.ilogger.html ILogger]] components to pass log messages
+ * - <code>\*:counters:\*:\*:1.0</code>            (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/count.icounters.html ICounters]] components to pass collected measurements
+ * - <code>\*:discovery:\*:\*:1.0</code>           (optional) [[https://pip-services3-node.github.io/pip-services3-components-node/interfaces/connect.idiscovery.html IDiscovery]] services to resolve connection
  * - <code>\*:endpoint:seneca:\*:1.0</code>        (optional) [[SenecaEndpoint]] reference
  *
  * @see [[SenecaClient]]
@@ -148,7 +149,7 @@ class SenecaService {
             }
             else {
                 // Check for type
-                let protocol = connection.getProtocol("none");
+                let protocol = connection.getProtocolWithDefault("none");
                 if (protocol == 'none') {
                     // Skip futher checks
                     // } else if (protocol != 'http' && protocol != 'https' && protocol != 'web') {
@@ -192,13 +193,13 @@ class SenecaService {
                         callback(err);
                     return;
                 }
-                if (connection.getProtocol('none') == 'none') {
+                if (connection.getProtocolWithDefault('none') == 'none') {
                     this._opened = true;
                     this._logger.debug(correlationId, "Seneca service started locally");
                 }
                 else {
                     try {
-                        let protocol = connection.getProtocol('none');
+                        let protocol = connection.getProtocolWithDefault('none');
                         let host = connection.getHost();
                         let port = connection.getPort();
                         let uri = connection.getUri() || protocol + "://" + host + ":" + port + "/";
@@ -280,6 +281,6 @@ class SenecaService {
         this._seneca.add(pattern, actionCurl);
     }
 }
-SenecaService._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples("dependencies.seneca", "pip-services:seneca:endpoint:*:*", "connection.protocol", "none", "connection.host", "0.0.0.0", "connection.port", 3000, "options.connect_timeout", 30000);
 exports.SenecaService = SenecaService;
+SenecaService._defaultConfig = pip_services3_commons_node_1.ConfigParams.fromTuples("dependencies.seneca", "pip-services:seneca:endpoint:*:*", "connection.protocol", "none", "connection.host", "0.0.0.0", "connection.port", 3000, "options.connect_timeout", 30000);
 //# sourceMappingURL=SenecaService.js.map

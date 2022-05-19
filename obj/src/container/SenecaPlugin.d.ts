@@ -25,7 +25,7 @@ export declare class SenecaPlugin {
      *
      * @returns the plugin name.
      */
-    readonly name: string;
+    get name(): string;
     private build;
     private open;
     private close;

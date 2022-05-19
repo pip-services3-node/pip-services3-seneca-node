@@ -16,7 +16,7 @@ import { ConnectionResolver } from 'pip-services3-components-node';
 import { ConnectionParams } from 'pip-services3-components-node';
 import { CompositeLogger } from 'pip-services3-components-node';
 import { CompositeCounters } from 'pip-services3-components-node';
-import { Timing } from 'pip-services3-components-node';
+import { CounterTiming } from 'pip-services3-components-node';
 
 import { SenecaEndpoint } from '../services/SenecaEndpoint';
 
@@ -126,7 +126,7 @@ export abstract class SenecaClient implements IOpenable, IConfigurable, IReferen
      * @param name              a method name.
      * @returns Timing object to end the time measurement.
      */
-    protected instrument(correlationId: string, name: string): Timing {
+    protected instrument(correlationId: string, name: string): CounterTiming {
         this._logger.trace(correlationId, "Executing %s method", name);
         return this._counters.beginTiming(name + ".exec_time");
     }
@@ -161,7 +161,7 @@ export abstract class SenecaClient implements IOpenable, IConfigurable, IReferen
                     correlationId, "NO_CONNECTION", "Connection for Seneca service is not defined");
             } else {
                 // Check for type
-                let protocol: string = connection.getProtocol("none");
+                let protocol: string = connection.getProtocolWithDefault("none");
                 if (protocol == 'none') {
                     // Skip futher checks
                 // } else if (protocol != 'http' && protocol != 'https' && protocol != 'web') {
@@ -207,12 +207,12 @@ export abstract class SenecaClient implements IOpenable, IConfigurable, IReferen
                     return;
                 }
 
-                if (connection.getProtocol('none') == 'none') {
+                if (connection.getProtocolWithDefault('none') == 'none') {
                     this._opened = true;
                     this._logger.debug(correlationId, "Seneca client connected locally");
                 } else {
                     try {
-                        let protocol = connection.getProtocol('none');
+                        let protocol = connection.getProtocolWithDefault('none');
                         let host = connection.getHost();
                         let port = connection.getPort();
                         let uri = connection.getUri() || protocol + "://" + host + ":" + port + "/";
